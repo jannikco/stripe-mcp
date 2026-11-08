@@ -12,7 +12,7 @@
   "maintainer": "jannikco",
   "license": "MIT",
   "attributionSlug": "github-stripe-mcp",
-  "sourceRevision": "45541134ba43ae688e75a3c85610dbbcf742985144869910c40345fddeb05306",
+  "sourceRevision": "3e3a956c4cfe31987b6c10067eefcfe9f1ae416bbf339e67b3fef3fa2b3d0830",
   "qualityVersion": 2,
   "artifactType": "connector",
   "evidence": [
@@ -30,7 +30,7 @@
   "appName": "Stripe",
   "connectorId": "stripe",
   "executionAuthority": "pipmcp-gateway",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "agentReady": true,
   "capabilityEvidence": {
     "local": {

@@ -1,0 +1,53 @@
+{
+  "id": "stripe-customer-contact-review",
+  "repositoryId": "stripe-mcp",
+  "product": "pipmcp",
+  "connectorId": "stripe",
+  "title": "Review Stripe customer contact data",
+  "promise": "Find customers missing an email before a billing support review.",
+  "sourceRevision": "3e3a956c4cfe31987b6c10067eefcfe9f1ae416bbf339e67b3fef3fa2b3d0830",
+  "credential": "PIPMCP_API_KEY",
+  "transport": "pipmcp-gateway",
+  "sourceRefs": [
+    "https://raw.githubusercontent.com/stripe/openapi/master/latest/openapi.spec3.json"
+  ],
+  "readTask": {
+    "intent": "Find customers missing an email before a billing support review.",
+    "requiredCapability": "Read-only authorized account data; discover actual names and schemas first"
+  },
+  "synthetic": {
+    "strategy": "equals",
+    "field": "emailPresent",
+    "value": false,
+    "records": [
+      {
+        "id": "synthetic-customer-st1",
+        "name": "Synthetic Account A",
+        "email": null
+      },
+      {
+        "id": "synthetic-customer-st2",
+        "name": "Synthetic Account B",
+        "email": "synthetic@example.invalid"
+      }
+    ],
+    "input": {
+      "limit": 10
+    },
+    "normalization": "Invented normalized review fields demonstrate task logic; live provider schemas and field mappings must be reviewed separately.",
+    "expectedReviewCount": 1,
+    "asOf": "2026-11-08T00:00:00Z",
+    "normalize": {
+      "type": "email-present",
+      "sourceField": "email"
+    }
+  },
+  "livePolicy": {
+    "default": "preflight-only",
+    "explicitReadSelectionRequired": true,
+    "providerWritesAllowed": false,
+    "sandboxWritesRequireSeparateApproval": true
+  },
+  "baseSourceRevision": "45541134ba43ae688e75a3c85610dbbcf742985144869910c40345fddeb05306",
+  "releaseVersion": "1.1.0"
+}
