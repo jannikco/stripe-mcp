@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "product": "pipmcp",
+  "credential": "PIPMCP_API_KEY",
+  "skills": [
+    {
+      "name": "pipmcp-stripe",
+      "description": "Connect AI agents to Stripe using one PipMCP API key and actual hosted tool discovery."
+    }
+  ],
+  "files": {
+    "skills/pipmcp-stripe/SKILL.md": "fa894f0828a782c05a4801023282331b440a840676bc542ef54ceee1196c49fc"
+  }
+}

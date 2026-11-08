@@ -1,348 +1,62 @@
 {
   "schemaVersion": 1,
-  "status": "ready",
-  "verification": "mock-only",
-  "releaseEligible": true,
-  "maintainer": "jannikco",
-  "license": "MIT",
-  "sourceRevision": "0110363d7a490c65768b85722f1e40dd7dec1e4b465913dab9f6f3a7fdc8e4a4",
-  "evidence": [
-    "Actual tools/call and direct-provider request contract tests"
-  ],
-  "provenance": [
-    "https://raw.githubusercontent.com/stripe/openapi/master/latest/openapi.spec3.json"
-  ],
   "id": "stripe-mcp",
   "kind": "provider-connector",
   "product": "pipmcp",
   "title": "Stripe MCP server",
-  "description": "Inspect sandbox customers and create a customer record using a restricted key; no payment collection.",
-  "operationIds": [
-    "stripe_list_customers",
-    "stripe_get_customer",
-    "stripe_create_customer"
+  "description": "Use Stripe with AI agents through one PipMCP API key, actual hosted schemas and governed execution.",
+  "status": "ready",
+  "verification": "mock-only",
+  "releaseEligible": true,
+  "operationIds": [],
+  "maintainer": "jannikco",
+  "license": "MIT",
+  "attributionSlug": "github-stripe-mcp",
+  "sourceRevision": "45541134ba43ae688e75a3c85610dbbcf742985144869910c40345fddeb05306",
+  "qualityVersion": 2,
+  "artifactType": "connector",
+  "evidence": [
+    "Gateway HTTP transport fixtures",
+    "Generated stdio wrapper discovery/call fixtures"
   ],
+  "provenance": [
+    "https://raw.githubusercontent.com/stripe/openapi/master/latest/openapi.spec3.json"
+  ],
+  "utility": {
+    "problem": "Inspect sandbox customers and create a customer record using a restricted key; no payment collection.",
+    "output": "Actual hosted tool schemas and durable governed execution receipts"
+  },
   "appSlug": "stripe",
   "appName": "Stripe",
-  "providerDocs": "https://raw.githubusercontent.com/stripe/openapi/master/latest/openapi.spec3.json",
-  "providerWebsite": "https://stripe.com/",
-  "authentication": {
-    "type": "bearer",
-    "requiredCredentialFields": [
-      "token"
-    ],
-    "settings": {},
-    "requiredHeaderNames": [],
-    "helpUrl": "https://docs.stripe.com/keys",
-    "tenantRequired": false,
-    "accountParameterNames": []
-  },
-  "attributionSlug": "github-stripe-mcp",
-  "artifactType": "connector",
-  "qualityVersion": 2,
   "connectorId": "stripe",
-  "connector": {
-    "id": "stripe",
-    "name": "Stripe",
-    "version": "0.1.0",
-    "baseUrl": "https://api.stripe.com",
-    "auth": {
-      "type": "bearer",
-      "env": "STRIPE_RESTRICTED_KEY"
-    },
-    "tools": [
-      {
-        "name": "stripe_list_customers",
-        "description": "stripe list customers",
-        "method": "GET",
-        "path": "/v1/customers",
-        "readOnly": true,
-        "inputSchema": {
-          "type": "object",
-          "properties": {
-            "limit": {
-              "type": "integer",
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          "required": [],
-          "additionalProperties": false
-        },
-        "bindings": {
-          "path": [],
-          "query": {
-            "limit": "limit"
-          },
-          "body": {}
-        },
-        "approvalRequired": false,
-        "provenance": [
-          "https://raw.githubusercontent.com/stripe/openapi/master/latest/openapi.spec3.json"
-        ],
-        "evidence": {
-          "state": "documented",
-          "providerLiveValidation": "not-run"
-        },
-        "sampleArguments": {
-          "limit": 5
-        }
-      },
-      {
-        "name": "stripe_get_customer",
-        "description": "stripe get customer",
-        "method": "GET",
-        "path": "/v1/customers/{customer}",
-        "readOnly": true,
-        "inputSchema": {
-          "type": "object",
-          "properties": {
-            "customer": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "customer"
-          ],
-          "additionalProperties": false
-        },
-        "bindings": {
-          "path": [
-            "customer"
-          ],
-          "query": {},
-          "body": {}
-        },
-        "approvalRequired": false,
-        "provenance": [
-          "https://raw.githubusercontent.com/stripe/openapi/master/latest/openapi.spec3.json"
-        ],
-        "evidence": {
-          "state": "documented",
-          "providerLiveValidation": "not-run"
-        },
-        "sampleArguments": {
-          "customer": "cus_REPLACE_WITH_AUTHORIZED_ID"
-        }
-      },
-      {
-        "name": "stripe_create_customer",
-        "description": "stripe create customer",
-        "method": "POST",
-        "path": "/v1/customers",
-        "readOnly": false,
-        "inputSchema": {
-          "type": "object",
-          "properties": {
-            "email": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "email"
-          ],
-          "additionalProperties": false
-        },
-        "bindings": {
-          "path": [],
-          "query": {},
-          "body": {
-            "email": "email",
-            "name": "name"
-          }
-        },
-        "approvalRequired": true,
-        "contentType": "application/x-www-form-urlencoded",
-        "provenance": [
-          "https://raw.githubusercontent.com/stripe/openapi/master/latest/openapi.spec3.json"
-        ],
-        "evidence": {
-          "state": "documented",
-          "providerLiveValidation": "not-run"
-        },
-        "sampleArguments": {
-          "email": "sandbox@example.com"
-        }
-      }
-    ],
-    "workflow": {
-      "name": "stripe-workflow",
-      "description": "Inspect sandbox customers and create a customer record using a restricted key; no payment collection.",
-      "steps": [
-        "stripe_list_customers",
-        "stripe_get_customer",
-        "stripe_create_customer"
-      ]
-    },
-    "provenance": [
-      "https://raw.githubusercontent.com/stripe/openapi/master/latest/openapi.spec3.json"
-    ],
-    "sourceEvidence": {
-      "state": "documented",
-      "providerLiveValidation": "not-run",
-      "checkedAt": "2026-11-08",
-      "operationCount": 3,
-      "kind": "official-openapi",
-      "sha256": "27e7f9681bfe4423708023338fd14096600581718fc2e15efd0d946d6a522c25"
-    },
-    "setup": {
-      "requiresPipMcpAccount": false,
-      "credentialsHelpUrl": "https://docs.stripe.com/keys",
-      "instructions": "In the Stripe Dashboard go to Developers > API keys and create a restricted key (recommended) with only the permissions you want the AI to have, then copy it (it starts with rk_live_ or sk_live_). Use a test-mode key to try things safely first."
-    },
-    "headers": {
-      "Stripe-Version": "2026-10-28.endive"
-    },
-    "development": "Use your own isolated Stripe sandbox and restricted key with customer-only permissions. No payment collection/fulfillment integration is included.",
-    "sampleWarning": "Example IDs are placeholders, not known provider records. Replace them with authorized sandbox/account IDs. Contact emails, file URLs and recipient numbers must be replaced with data you are authorized to use. Examples never authorize a write.",
-    "repoId": "stripe-mcp",
-    "appSlug": "stripe",
-    "product": "pipmcp",
-    "artifactType": "connector",
-    "sourceRevision": "0110363d7a490c65768b85722f1e40dd7dec1e4b465913dab9f6f3a7fdc8e4a4",
-    "capabilityEvidence": {
-      "local": {
-        "level": "Tested",
-        "operations": [
-          {
-            "name": "stripe_list_customers",
-            "level": "Tested",
-            "evidenceRefs": [
-              "Provider request/stdio contract tests"
-            ],
-            "method": "contract-fixture"
-          },
-          {
-            "name": "stripe_get_customer",
-            "level": "Tested",
-            "evidenceRefs": [
-              "Provider request/stdio contract tests"
-            ],
-            "method": "contract-fixture"
-          },
-          {
-            "name": "stripe_create_customer",
-            "level": "Tested",
-            "evidenceRefs": [
-              "Provider request/stdio contract tests"
-            ],
-            "method": "contract-fixture"
-          }
-        ],
-        "evidenceRefs": [
-          "Provider request/stdio contract tests"
-        ],
-        "mode": "local"
-      },
-      "managed": {
-        "level": "Documented",
-        "operations": [
-          {
-            "name": "stripe_list_customers",
-            "level": "Documented",
-            "evidenceRefs": [],
-            "method": "documentation"
-          },
-          {
-            "name": "stripe_get_customer",
-            "level": "Documented",
-            "evidenceRefs": [],
-            "method": "documentation"
-          },
-          {
-            "name": "stripe_create_customer",
-            "level": "Documented",
-            "evidenceRefs": [],
-            "method": "documentation"
-          }
-        ],
-        "evidenceRefs": [],
-        "mode": "managed"
-      }
-    },
-    "authentication": {
-      "type": "bearer",
-      "requiredCredentialFields": [
-        "token"
-      ],
-      "settings": {},
-      "requiredHeaderNames": [],
-      "helpUrl": "https://docs.stripe.com/keys",
-      "tenantRequired": false,
-      "accountParameterNames": []
-    },
-    "managedAvailability": {
-      "status": "listed",
-      "checkedAt": "2026-11-08T12:29:10.433747+00:00"
-    }
-  },
+  "executionAuthority": "pipmcp-gateway",
+  "version": "1.0.0",
+  "agentReady": true,
   "capabilityEvidence": {
     "local": {
       "level": "Tested",
       "operations": [
         {
-          "name": "stripe_list_customers",
+          "name": "gateway_transport",
           "level": "Tested",
+          "method": "contract-fixture",
           "evidenceRefs": [
-            "Provider request/stdio contract tests"
-          ],
-          "method": "contract-fixture"
-        },
-        {
-          "name": "stripe_get_customer",
-          "level": "Tested",
-          "evidenceRefs": [
-            "Provider request/stdio contract tests"
-          ],
-          "method": "contract-fixture"
-        },
-        {
-          "name": "stripe_create_customer",
-          "level": "Tested",
-          "evidenceRefs": [
-            "Provider request/stdio contract tests"
-          ],
-          "method": "contract-fixture"
+            "Generated gateway/stdio fixtures"
+          ]
         }
       ],
       "evidenceRefs": [
-        "Provider request/stdio contract tests"
+        "Generated gateway/stdio fixtures"
       ],
       "mode": "local"
     },
     "managed": {
       "level": "Documented",
-      "operations": [
-        {
-          "name": "stripe_list_customers",
-          "level": "Documented",
-          "evidenceRefs": [],
-          "method": "documentation"
-        },
-        {
-          "name": "stripe_get_customer",
-          "level": "Documented",
-          "evidenceRefs": [],
-          "method": "documentation"
-        },
-        {
-          "name": "stripe_create_customer",
-          "level": "Documented",
-          "evidenceRefs": [],
-          "method": "documentation"
-        }
-      ],
+      "operations": [],
       "evidenceRefs": [],
       "mode": "managed"
     }
   },
-  "utility": {
-    "problem": "Inspect sandbox customers and create a customer record using a restricted key; no payment collection.",
-    "output": "Actual provider API results through local MCP tools"
-  },
   "factory": "leadadapter-pipmcp",
-  "generatorVersion": 2
+  "generatorVersion": 3
 }
