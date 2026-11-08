@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "status": "ready",
+  "verification": "mock-only",
+  "releaseEligible": true,
+  "maintainer": "jannikco",
+  "license": "MIT",
+  "sourceRevision": "d3d2466294d404f712c58026be6dab5f2b07d7dcdd4a8a9f6945e9930c4e638d",
+  "evidence": [
+    "Source-backed provider setup metadata",
+    "Offline configuration and MCP protocol tests"
+  ],
+  "provenance": [
+    "https://raw.githubusercontent.com/stripe/openapi/master/latest/openapi.spec3.json"
+  ],
+  "id": "stripe-mcp",
+  "kind": "mcp-setup",
+  "product": "pipmcp",
+  "title": "Stripe MCP setup and connection checker",
+  "description": "Generate Stripe MCP client configuration, inspect available tools and validate hosted endpoint access through PipMCP.",
+  "operationIds": [],
+  "appSlug": "stripe",
+  "appName": "Stripe",
+  "providerDocs": "https://raw.githubusercontent.com/stripe/openapi/master/latest/openapi.spec3.json",
+  "providerWebsite": "https://stripe.com/",
+  "authentication": {
+    "type": "bearer",
+    "requiredCredentialFields": [
+      "token"
+    ],
+    "requiredHeaderNames": [],
+    "helpUrl": "https://docs.stripe.com/keys",
+    "tenantRequired": false,
+    "accountParameterNames": []
+  },
+  "attributionSlug": "github-stripe-mcp",
+  "factory": "leadadapter-pipmcp",
+  "generatorVersion": 1
+}
